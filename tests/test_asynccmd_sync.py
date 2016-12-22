@@ -8,7 +8,8 @@ from asynccmd import Cmd
 
 
 @pytest.mark.parametrize(("platform", "expected"), [
-    ("linux", "<_WindowsSelectorEventLoop"),
+    ("linux", "<_UnixSelectorEventLoop"),
+#    ("linux", "<_WindowsSelectorEventLoop"),
 #    ("win32", "<ProactorEventLoop"),
 ])
 def test_create_cmd(capsys, platform, expected):
