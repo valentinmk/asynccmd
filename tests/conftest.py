@@ -31,7 +31,7 @@ def loop():
 
 @pytest.fixture
 def aio_cmd(loop):
-    aio_cmd = Cmd(mode="Run", run_loop=False)
+    aio_cmd = Cmd(mode="Reader", run_loop=False)
     aio_cmd.cmdloop(loop)
     return aio_cmd
 
@@ -39,7 +39,7 @@ def aio_cmd(loop):
 @pytest.yield_fixture
 def aiocmd(loop):
     #print("Run start_aiocmd")
-    aio_cmd = Cmd(mode="Run", run_loop=True)
+    aio_cmd = Cmd(mode="Reader", run_loop=True)
     yield aio_cmd.cmdloop()
     #print("Stop start_aiocmd")
     if not aio_cmd.loop.is_closed:
