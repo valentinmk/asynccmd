@@ -2,7 +2,6 @@ import asyncio
 import gc
 import pytest
 import sys
-sys.path.append("..")
 from asynccmd import Cmd
 
 @pytest.yield_fixture
