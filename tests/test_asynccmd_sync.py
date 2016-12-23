@@ -26,7 +26,7 @@ def test_create_cmd(capsys, platform, expected):
     with capsys.disabled():
         platform_patcher = mock.patch('sys.platform',platform)
         platform_patcher.start()
-        aio_cmd = Cmd(mode="Reader", run_loop=False)
+        aio_cmd = Cmd(mode="Run", run_loop=False)
         aio_cmd.cmdloop()
         assert str(aio_cmd.loop).startswith(expected)
 
