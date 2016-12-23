@@ -26,8 +26,10 @@ class Commander(Cmd):
         self.loop = loop
         super().cmdloop(loop)
 
-loop = asyncio.ProactorEventLoop()
-#loop = asyncio.get_event_loop()
+if sys.platform == 'win32':
+   loop = asyncio.ProactorEventLoop()
+else:
+   loop = asyncio.get_event_loop()
 cmd = Commander(intro="This is example", prompt="example> ")
 cmd.start(loop)
 try:
