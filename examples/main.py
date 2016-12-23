@@ -20,7 +20,7 @@ class Commander(Cmd):
         :param arg: args occurred from cmd after command
         :return:
         """
-        print(print(asyncio.Task.all_tasks(loop=self.loop)))
+        print(asyncio.Task.all_tasks(loop=self.loop))
 
     def start(self, loop=None):
         self.loop = loop
