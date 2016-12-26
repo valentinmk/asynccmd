@@ -22,13 +22,12 @@ def test_create_cmd_win(capsys, platform, expected):
 @pytest.mark.parametrize(("platform", "expected"), [
     ("linux", "<_UnixSelectorEventLoop"),
 ])
-def test_create_cmd(capsys, platform, expected):
-    with capsys.disabled():
-        platform_patcher = mock.patch('sys.platform',platform)
-        platform_patcher.start()
-        aio_cmd = Cmd(mode="Run", run_loop=False)
-        aio_cmd.cmdloop()
-        assert str(aio_cmd.loop).startswith(expected)
+def test_create_cmd(loop, platform, expected):
+    platform_patcher = mock.patch('sys.platform',platform)
+    platform_patcher.start()
+    aio_cmd = Cmd(mode="Run", run_loop=False)
+    aio_cmd.cmdloop(loop=loop)
+    assert str(aio_cmd.loop).startswith(expected)
 
 def test_lastcmd(loop):
     aio_cmd = Cmd(mode="Run", run_loop=False)
