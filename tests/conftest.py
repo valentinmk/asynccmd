@@ -2,6 +2,7 @@ import asyncio
 import gc
 import pytest
 import sys
+import concurrent.futures
 from asynccmd import Cmd
 
 @pytest.yield_fixture
@@ -9,6 +10,8 @@ def loop():
     #print("conftest loop start")
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(None)
+    executor = concurrent.futures.ThreadPoolExecutor()
+    loop.set_default_executor(executor)
     #print("conftest loop = {0}".format(loop))
     #print("conftest yield loop")
     yield loop
@@ -17,6 +20,7 @@ def loop():
     if loop.is_closed:
         #print("loop.is_closed")
         loop.close()
+        executor.shutdown()
         pending = asyncio.Task.all_tasks(loop=loop)
         for task in pending:
             task.cancel()
