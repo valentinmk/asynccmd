@@ -16,7 +16,7 @@ class Commander(Cmd):
 
     def do_tasks(self, arg):
         """
-        Fake command. Type "prodigy {arg}"
+        Fake command. Type "tasks {arg}"
         :param arg: args occurred from cmd after command
         :return:
         """
