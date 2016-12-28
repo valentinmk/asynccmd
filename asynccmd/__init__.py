@@ -4,4 +4,4 @@
 # the Apache 2.0 License: http://www.apache.org/licenses/LICENSE-2.0
 
 from .asynccmd import Cmd
-__version__ = '0.2.0'
+__version__ = '0.2.1'
