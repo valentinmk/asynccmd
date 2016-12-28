@@ -1,7 +1,7 @@
 # TBD
 from setuptools import setup
 
-install_requires = ['asyncio']
+install_requires = []
 tests_require = install_requires + ['pytest']
 
 classifiers = [

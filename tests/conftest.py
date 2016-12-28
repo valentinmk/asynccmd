@@ -38,24 +38,3 @@ def aio_cmd(loop):
     aio_cmd = Cmd(mode="Run", run_loop=False)
     aio_cmd.cmdloop(loop)
     return aio_cmd
-
-#depreciated
-@pytest.yield_fixture
-def aiocmd(loop):
-    #print("Run start_aiocmd")
-    aio_cmd = Cmd(mode="Run", run_loop=True)
-    yield aio_cmd.cmdloop()
-    #print("Stop start_aiocmd")
-    if not aio_cmd.loop.is_closed:
-        aio_cmd.loop.close()
-
-#depreciated
-@pytest.yield_fixture
-def CntrC():
-    print("conftest CntrC start")
-    def stop():
-        print("conftest raise KeyboardInterrupt")
-        raise KeyboardInterrupt
-    print("conftest CntrC yield stop")
-    asyncio.sleep(10)
-    yield stop()
