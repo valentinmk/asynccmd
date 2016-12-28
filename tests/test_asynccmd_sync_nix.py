@@ -38,18 +38,16 @@ Available command list: \n\
  -  help\n\
  -  test\n"),
     #("Reader", "test", "Called buildin function do_test with args: \n"),
-'''
-    ("Reader", "help", "Default help handler. Have arg :  , but ignore its.\n\
-Available command list: \n\
- -  exit\n\
- -  help\n\
- -  test\n"),
-    ("Reader", "?", "Default help handler. Have arg :  , but ignore its.\n\
-Available command list: \n\
- -  exit\n\
- -  help\n\
- -  test\n"),
-'''
+    #("Reader", "help", "Default help handler. Have arg :  , but ignore its.\n\
+#Available command list: \n\
+# -  exit\n\
+# -  help\n\
+# -  test\n"),
+#    ("Reader", "?", "Default help handler. Have arg :  , but ignore its.\n\
+#Available command list: \n\
+# -  exit\n\
+# -  help\n\
+# -  test\n"),
 ])
 def test__exec_cmd(capsys,aio_cmd, mode, command, output):
     aio_cmd._exec_cmd(command)
