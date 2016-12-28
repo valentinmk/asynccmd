@@ -3,6 +3,7 @@ import asyncio
 import sys
 from unittest import mock
 from io import StringIO
+sys.path.append("..")
 from asynccmd import Cmd
 
 '''
