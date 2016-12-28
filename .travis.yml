@@ -11,7 +11,7 @@ install:
   - pip install -r requirements.txt
 # command to run tests
 script: 
-  - pytest tests/test_asynccmd_sync_nix.py --cov -v
+  - pytest tests/test_asynccmd_sync_nix.py --cov -v -s
 # command for codecov.io
 before_install:
   pip install codecov
