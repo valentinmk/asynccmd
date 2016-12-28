@@ -1,5 +1,10 @@
-# Property of Valentin Kazakov (vkazakov@gmail.com)
-# This code inspired by cmd standard library of Python
+# Copyright (c) 2016-present Valentin Kazakov
+#
+# This module is part of asyncpg and is released under
+# the Apache 2.0 License: http://www.apache.org/licenses/LICENSE-2.0
+#
+# This lib is inspired by Cmd standart lib Python >3.5 (under Python Software Foundation License 2)
+
 import asyncio
 import string
 import sys

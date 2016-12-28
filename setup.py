@@ -1,3 +1,8 @@
+# Copyright (c) 2016-present Valentin Kazakov
+#
+# This module is part of asyncpg and is released under
+# the Apache 2.0 License: http://www.apache.org/licenses/LICENSE-2.0
+
 import os
 import re
 from setuptools import setup
@@ -26,6 +31,7 @@ except(IOError, ImportError):
 classifiers = [
     'License :: OSI Approved :: Apache Software License',
     'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
     'Operating System :: POSIX :: Linux',
     'Operating System :: Microsoft :: Windows',
     'Environment :: Console',
