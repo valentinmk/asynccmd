@@ -4,6 +4,7 @@ from setuptools import setup
 
 install_requires = []
 tests_require = install_requires + ['pytest']
+extras_require = {"pypandoc":"pypandoc"}
 
 def read_version():
     regexp = re.compile(r"^__version__\W*=\W*'([\d.abrc]+)'")
@@ -16,6 +17,11 @@ def read_version():
         else:
             raise RuntimeError('Cannot find version in asynccmd/__init__.py')
 
+try:
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
+except(IOError, ImportError):
+    long_description = open('README.md').read()
 
 classifiers = [
     'License :: OSI Approved :: Apache Software License',
@@ -29,8 +35,8 @@ classifiers = [
 
 setup(name='asynccmd',
       version=read_version(),
-      description=('Async implementation of Cmd Python lib.'),
-      long_description='Async implementation of Cmd Python lib.',
+      description='Asyncio implementation of Cmd Python lib.',
+      long_description=long_description,
       classifiers=classifiers,
       platforms=['POSIX', 'Microsoft :: Windows'],
       author='Valentin Kazakov',
@@ -40,5 +46,6 @@ setup(name='asynccmd',
       license='Apache 2',
       packages=['asynccmd'],
       install_requires=install_requires,
+      extras_require=extras_require,
       include_package_data=True,
 )

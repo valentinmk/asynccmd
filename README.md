@@ -6,9 +6,7 @@ Async implementation of cmd Python lib.
 
 It's very simple like original Cmd lib [https://docs.python.org/3.6/library/cmd.html](https://docs.python.org/3.6/library/cmd.html).
 
-The mechanic is very similar.
-
-You have Cmd class, you can override class method and add yours own.
+The mechanic is very similar. You have Cmd class, you can override class method and add yours own.
 
 ```Python
 import asyncio
