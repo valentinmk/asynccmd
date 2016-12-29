@@ -1,3 +1,4 @@
+import asyncio
 from aiohttp import web
 import logging
 
@@ -22,8 +23,8 @@ async def wshandler(request):
             break
 
     return ws
-
-
+loop = asyncio.ProactorEventLoop()
+asyncio.set_event_loop(loop)
 app = web.Application()
 app.router.add_get('/echo', wshandler)
 app.router.add_get('/', handle)

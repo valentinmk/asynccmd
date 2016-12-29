@@ -1,32 +1,38 @@
-import asyncio
-import sys
 import logging
-from aiohttp import web
-
+#adding logging for see http requests
 logging.basicConfig(format = u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s',
                         level = logging.DEBUG)
+logging.info("import asyncio")
+import asyncio
+logging.info("import sys")
+import sys
+logging.info("from contextlib import suppress")
+from contextlib import suppress
+logging.info("from aiohttp import web")
+from aiohttp import web
 
-async def handle(request):
-    logging.info("handle")
-    name = request.match_info.get('name', "Anonymous")
-    text = "Hello, " + name
-    return web.Response(text=text)
+
 
 class AiohttpCmdHelper:
     port = 8080
+    loop = asyncio.get_event_loop()
     def __init__(self, loop, port):
         logging.info("__init__")
         self.loop = loop
         self.port = port
 
-
+    async def handle(request):
+        logging.info("handle")
+        name = request.match_info.get('name', "Anonymous")
+        text = "Hello, " + name
+        return web.Response(text=text)
 
     def start(self):
         logging.info("start")
         logging.info(self.loop)
         self.app = web.Application()
-        self.app.router.add_get('/', handle)
-        self.app.router.add_get('/{name}', handle)
+        self.app.router.add_get('/', self.handle)
+        self.app.router.add_get('/{name}', self.handle)
         self.handler = self.app.make_handler()
         logging.info("self.handler = {0}".format(self.handler))
         self.srv = self.loop.run_until_complete(self.loop.create_server(self.handler,
@@ -49,9 +55,9 @@ if sys.platform == 'win32':
 else:
    loop = asyncio.get_event_loop()
    mode = "Reader"
-logging.info("1")
+
+#asyncio.set_event_loop(loop) # set our event loop for aiohttp
 test = AiohttpCmdHelper(loop=loop, port=8080)
-logging.info("2")
 test.start()
 
 try:
