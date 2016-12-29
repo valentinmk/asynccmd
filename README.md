@@ -20,7 +20,7 @@ The mechanic is very similar. You have Cmd superclass, you can override class me
 
 ## Features
 * support command line for Windows and POSIX systems
-* build-in `help` or `?` command to list all avalible command
+* build-in `help` or `?` command to list all available  command
 * build-in `exit` command for emergency stop asyncio loop
 * support repeat last cmd command by pressing up arrow
 
@@ -30,10 +30,10 @@ The mechanic is very similar. You have Cmd superclass, you can override class me
 ### Simple example
 This is very simple example to show you main feature and how to use.
 
-First of all, we are create new class and inhirite our `Cmd` class. Do not
+First of all, we are create new class and inherited  our `Cmd` class. Do not
 instantiate `Cmd` itself.
 
-Than create instanse of this new class and run loop.
+Than create instance of this new class and run loop.
 ```Python
 class SimpleCommander(Cmd):
     def __init__(self, mode, intro, prompt):
@@ -56,17 +56,17 @@ class SimpleCommander(Cmd):
         super().cmdloop(loop) # Create async tasks to run in loop. There is run_loop=false by default
 
 # For win system we have only Run mode
-# For POSIX system Reader mode is prefered
+# For POSIX system Reader mode is preferred
 if sys.platform == 'win32':
    loop = asyncio.ProactorEventLoop()
    mode = "Run"
 else:
    loop = asyncio.get_event_loop()
    mode = "Reader"
-cmd = SimpleCommander(mode=mode, intro="This is example", prompt="example> ") #create instanse
+cmd = SimpleCommander(mode=mode, intro="This is example", prompt="example> ") #create instance
 cmd.start(loop) #prepaire instanse
 try:
-    loop.run_forever() # our coomand lin will run automatilly from this point
+    loop.run_forever() # our command line will run automatically from this point
 except KeyboardInterrupt:
     loop.stop()
 ```
@@ -74,7 +74,7 @@ except KeyboardInterrupt:
 
 ### General example
 We are use sipmle example, but adding some new staff:
-* `sleep_n_print` corutine that will be called from our cmd command
+* `sleep_n_print` coroutine that will be called from our cli command
 * `do_sleep` new method (sleep cli command) that add task to event loop
 
 ```Python
@@ -116,7 +116,7 @@ Wake up! I was slept for 10s
 ```
 
 ### Aiohttp implementation
-This is practical example control aihttp instanses. We will create two cli command
+This is practical example control aiohttp instances. We will create two cli command
 `start_server` and `stop_server`. This command get port number as only argument.
 Let's make some changes for our general example:
 TBD
@@ -129,7 +129,7 @@ TBD
 
 Main stream is fork project, commit changes and send pull request.
 For contributing to lib you could make in form of feedback, bug reports or pull requests.
-CONTRIBUTING.md - tbd.
+CONTRIBUTING.md - TBD.
 
 ## Requirements
 * Python >= 3.5

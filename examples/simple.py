@@ -23,7 +23,7 @@ class SimpleCommander(Cmd):
         super().cmdloop(loop) # Create async tasks to run in loop. There is run_loop=false by default
 
 # For win system we have only Run mode
-# For POSIX system Reader mode is prefered
+# For POSIX system Reader mode is preferred
 if sys.platform == 'win32':
    loop = asyncio.ProactorEventLoop()
    mode = "Run"
@@ -31,7 +31,7 @@ else:
    loop = asyncio.get_event_loop()
    mode = "Reader"
 cmd = SimpleCommander(mode=mode, intro="This is example", prompt="example> ") #create instanse
-cmd.start(loop) #prepaire instanse
+cmd.start(loop) #prepaire instance
 try:
     loop.run_forever() # our cmd will run automatilly from this moment
 except KeyboardInterrupt:
