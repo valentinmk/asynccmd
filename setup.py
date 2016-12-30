@@ -11,9 +11,12 @@ install_requires = []
 tests_require = install_requires + ['pytest']
 extras_require = {}
 
+
 def read_version():
     regexp = re.compile(r"^__version__\W*=\W*'([\d.abrc]+)'")
-    init_py = os.path.join(os.path.dirname(__file__), 'asynccmd', '__init__.py')
+    init_py = os.path.join(os.path.dirname(__file__),
+                           'asynccmd',
+                           '__init__.py')
     with open(init_py) as f:
         for line in f:
             match = regexp.match(line)
@@ -21,6 +24,7 @@ def read_version():
                 return match.group(1)
         else:
             raise RuntimeError('Cannot find version in asynccmd/__init__.py')
+
 
 long_description = open('README.rst').read()
 
@@ -49,4 +53,4 @@ setup(name='asynccmd',
       packages=['asynccmd'],
       install_requires=install_requires,
       extras_require=extras_require,
-)
+      )

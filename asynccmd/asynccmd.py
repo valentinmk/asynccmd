@@ -3,7 +3,8 @@
 # This module is part of asyncpg and is released under
 # the Apache 2.0 License: http://www.apache.org/licenses/LICENSE-2.0
 #
-# This lib is inspired by Cmd standart lib Python >3.5 (under Python Software Foundation License 2)
+# This lib is inspired by Cmd standart lib Python >3.5 (under Python Software
+# Foundation License 2)
 
 import asyncio
 import string
@@ -22,9 +23,9 @@ class Cmd:
     """
     loop = None  # asyncio.get_even_loop()
     mode = "Reader"  # Reader:loop.add_reader OR Run:loop.run_in_executor
-    run_loop = False  # True: run loop forever OR False: no run forever in the end
+    run_loop = False  # True: loop.run_forever OR False: no run event loop
     prompt = "asynccmd > "  # Str: it would writen before input
-    intro = "asynccmd ready to serve"  # Str: it would writen before start hole cmd
+    intro = "asynccmd ready to serve"  # Str: intro message before cli start
     currentcmd = ""  # Str: currentcmd that catch
     lastcmd = ""  # Str: last cmd command
     allowedchars = string.ascii_letters + string.digits + '_'
@@ -61,7 +62,6 @@ class Cmd:
     def cmdloop(self, loop=None):
         self._start_controller(loop)
 
-
     def _start_controller(self, loop):
         """
         Control structure to start new cmd
@@ -70,23 +70,16 @@ class Cmd:
         """
         # Loop check
         if loop is None:
-            #print("if loop is None")
             if sys.platform == 'win32':
-                #print("if sys.platform == 'win32'")
                 self.loop = asyncio.ProactorEventLoop()
-                #asyncio.set_event_loop(loop)
             else:
-                #print("else sys.platform == 'win32'")
                 self.loop = asyncio.get_event_loop()
         else:
-            #print("else loop is None")
             self.loop = loop
         # Starting by add "tasks" in "loop"
         if self.mode == "Reader":
-            #print("self.mode == Reader")
             self._start_reader()
         elif self.mode == "Run":
-            #print("self.mode == Run")
             self._start_run()
         else:
             raise TypeError("self.mode is not Reader or Run.")
@@ -94,8 +87,6 @@ class Cmd:
         if self.run_loop:
             try:
                 print("Cmd._start_controller start loop inside Cmd object!")
-                #print(self.intro)
-                #self.stdout.write(self.prompt)
                 self.stdout.flush()
                 self.loop.run_forever()
             except KeyboardInterrupt:
@@ -103,27 +94,19 @@ class Cmd:
                 self.loop.stop()
                 pending = asyncio.Task.all_tasks(loop=self.loop)
                 print(asyncio.Task.all_tasks(loop=self.loop))
-                #print(pending)
-                #self.loop.run_until_complete(asyncio.gather(*pending))
-
                 for task in pending:
                     task.cancel()
-                    # Now we should await task to execute it's cancellation.
-                    # Cancelled task raises asyncio.CancelledError that we can suppress:
                     with suppress(asyncio.CancelledError):
                         self.loop.run_until_complete(task)
-
-                #self.loop.close()
+                # self.loop.close()
 
     def _start_run(self):
-        #print("Cmd.start_run")
         if self.loop is None:
             raise TypeError("self.loop is None.")
         self.loop.create_task(self._read_line())
         self.loop.create_task(self._greeting())
 
     def _start_reader(self):
-        # print("Cmd.start_reader")
         if self.loop is None:
             raise TypeError("self.loop is None.")
         self.loop.add_reader(self.stdin.fileno(), self.reader)
@@ -142,7 +125,7 @@ class Cmd:
             print(self.prompt)
             sys.stdout.flush()
     #
-    #Addition method for work with input
+    # Additional methods for work with input
     #
 
     def _exec_cmd(self, line):
@@ -177,7 +160,8 @@ class Cmd:
             else:
                 return None, None, line
         iline, nline = 0, len(line)
-        while iline < nline and line[iline] in self.allowedchars: iline += 1
+        while iline < nline and line[iline] in self.allowedchars:
+            iline += 1
         command = line[:iline]
         arg = line[iline:].strip()
         return command, arg, line

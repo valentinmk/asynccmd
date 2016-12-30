@@ -2,13 +2,16 @@ import asyncio
 from aiohttp import web
 import logging
 
-logging.basicConfig(format = u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s',
-                        level = logging.DEBUG)
+logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s \
+                    \[%(asctime)s]  %(message)s',
+                    level=logging.DEBUG)
+
 
 async def handle(request):
     name = request.match_info.get('name', "Anonymous")
     text = "Hello, " + name
     return web.Response(text=text)
+
 
 async def wshandler(request):
     ws = web.WebSocketResponse()
