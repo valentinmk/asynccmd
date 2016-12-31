@@ -1,12 +1,8 @@
 [![Build Status](https://travis-ci.org/valentinmk/asynccmd.svg?branch=master)](https://travis-ci.org/valentinmk/asynccmd)
 [![codecov](https://codecov.io/gh/valentinmk/asynccmd/branch/master/graph/badge.svg)](https://codecov.io/gh/valentinmk/asynccmd)
 [![PyPI version](https://badge.fury.io/py/asynccmd.svg)](https://badge.fury.io/py/asynccmd)
+[![PyPI](https://img.shields.io/pypi/status/asynccmd.svg)]()
 
-
-[![PyPI](https://img.shields.io/pypi/dm/asynccmd.svg?style=flat-square)]()
-[![PyPI](https://img.shields.io/pypi/l/asynccmd.svg?style=flat-square)]()
-[![PyPI](https://img.shields.io/pypi/pyversions/asynccmd.svg?style=flat-square)]()
-[![PyPI](https://img.shields.io/pypi/status/asynccmd.svg?style=flat-square)]()
 
 # asynccmd
 
