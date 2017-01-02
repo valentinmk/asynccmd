@@ -86,7 +86,7 @@ simple.py <https://github.com/valentinmk/asynccmd/blob/master/examples/simple.py
 General example
 ~~~~~~~~~~~~~~~
 
-We use our sipmle example, but add some new staff: \* ``sleep_n_print``
+We use our simple example, but add some new staff: \* ``sleep_n_print``
 coroutine that will be called from our cli command \* ``do_sleep`` new
 method (sleep cli command) that add task to event loop
 
@@ -94,7 +94,7 @@ method (sleep cli command) that add task to event loop
 
     async def sleep_n_print(loop, time_to_sleep=None):
         """
-        This is our simple corutine.
+        This is our simple coroutine.
         :param time_to_sleep: time to sleep in seconds
         :return: await sleep for time_to_sleep seconds
         """
@@ -270,7 +270,7 @@ License
 Source code
 -----------
 
-The latest developer version is avalible at
+The latest developer version is available at
 https://github.com/valentinmk/asynccmd
 
 .. |Build Status| image:: https://travis-ci.org/valentinmk/asynccmd.svg?branch=master
@@ -280,4 +280,4 @@ https://github.com/valentinmk/asynccmd
 .. |PyPI version| image:: https://badge.fury.io/py/asynccmd.svg
    :target: https://badge.fury.io/py/asynccmd
 .. |PyPI| image:: https://img.shields.io/pypi/status/asynccmd.svg
-   :target:
+   :target: https://img.shields.io/pypi/status/asynccmd.svg

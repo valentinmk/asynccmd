@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/valentinmk/asynccmd.svg?branch=master)](https://travis-ci.org/valentinmk/asynccmd)
 [![codecov](https://codecov.io/gh/valentinmk/asynccmd/branch/master/graph/badge.svg)](https://codecov.io/gh/valentinmk/asynccmd)
 [![PyPI version](https://badge.fury.io/py/asynccmd.svg)](https://badge.fury.io/py/asynccmd)
-[![PyPI](https://img.shields.io/pypi/status/asynccmd.svg)]()
+[![PyPI](https://img.shields.io/pypi/status/asynccmd.svg)](https://img.shields.io/pypi/status/asynccmd.svg)
 
 
 # asynccmd
@@ -77,14 +77,14 @@ except KeyboardInterrupt:
 [Link to simple.py](https://github.com/valentinmk/asynccmd/blob/master/examples/simple.py)
 
 ### General example
-We use our sipmle example, but add some new staff:
+We use our simple example, but add some new staff:
 * `sleep_n_print` coroutine that will be called from our cli command
 * `do_sleep` new method (sleep cli command) that add task to event loop
 
 ```Python
 async def sleep_n_print(loop, time_to_sleep=None):
     """
-    This is our simple corutine.
+    This is our simple coroutine.
     :param time_to_sleep: time to sleep in seconds
     :return: await sleep for time_to_sleep seconds
     """
@@ -249,4 +249,4 @@ CONTRIBUTING.md - TBD.
 
 ## Source code
 
-The latest developer version is avalible at [https://github.com/valentinmk/asynccmd](https://github.com/valentinmk/asynccmd)
+The latest developer version is available at [https://github.com/valentinmk/asynccmd](https://github.com/valentinmk/asynccmd)

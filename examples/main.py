@@ -6,7 +6,7 @@ from asynccmd import Cmd
 
 async def sleep_n_print(loop, time_to_sleep=None):
     """
-    This is our simple corutine.
+    This is our simple coroutine.
     :param time_to_sleep: time to sleep in seconds
     :return: await sleep for time_to_sleep seconds
     """

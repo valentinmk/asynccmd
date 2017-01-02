@@ -39,8 +39,8 @@ else:
     mode = "Reader"
 # create instance
 cmd = SimpleCommander(mode=mode, intro="This is example", prompt="example> ")
-cmd.start(loop)  # prepaire instance
+cmd.start(loop)  # prepare instance
 try:
-    loop.run_forever()  # our cmd will run automatilly from this moment
+    loop.run_forever()  # our cmd will run automatically from this moment
 except KeyboardInterrupt:
     loop.stop()

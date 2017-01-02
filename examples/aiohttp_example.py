@@ -42,7 +42,7 @@ class AiohttpCmdHelper:
         self.f = self.loop.create_server(self.handler,
                                          host='0.0.0.0',
                                          port=self.port)
-        # Event loop is already runing, so we await create server instead
+        # Event loop is already running, so we await create server instead
         # of run_until_complete
         self.srv = await self.f
 
