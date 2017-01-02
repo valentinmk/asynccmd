@@ -80,7 +80,7 @@ class Commander(Cmd):
             print("Error port is empty")
         else:
             test = AiohttpCmdHelper(loop=self.loop, port=int(arg))
-            self.aiohttp_servers.append({test, int(arg)})
+            self.aiohttp_servers.append({'port': int(arg),'server': test})
             self.loop.create_task(test.start())
 
     def do_stop(self, arg):
@@ -93,12 +93,11 @@ class Commander(Cmd):
             print("Error! Provided port is empty")
         else:
             aiohttp_servers = []
-            for port, server in self.aiohttp_servers:
-                print('server = {0}, port = {1}'.format(server, port))
-                if port == int(arg):
-                    self.loop.create_task(server.stop())
+            for srv in self.aiohttp_servers:
+                if srv['port'] == int(arg):
+                    self.loop.create_task(srv['server'].stop())
                 else:
-                    aiohttp_servers.append({server, port})
+                    aiohttp_servers.append({'port': srv['port'], 'server': srv['server']})
             self.aiohttp_servers = aiohttp_servers
 
     def do_tasks(self, arg):
